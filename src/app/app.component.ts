@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Angular-material';
   notifications = 10;
+  opened= true;
+
+logState(state){
+  console.log(state);
+  
+}
+
+
 }

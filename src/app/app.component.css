@@ -1,0 +1,27 @@
+.navbar {
+    justify-content: space-between;
+}
+
+#navbar>span {
+    padding-right: 1rem;
+    ;
+}
+
+.container {
+    height: 300px;
+    background-color: darkgrey;
+}
+
+.sidenav {
+    background-color: coral;
+    padding: 20px;
+    width: 10rem;
+}
+
+span {
+    padding: 10px;
+}
+
+.bgColor{
+    background-color: lightblue;
+}

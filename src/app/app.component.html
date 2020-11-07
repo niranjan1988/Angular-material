@@ -110,21 +110,123 @@
     Buffer + value + Buffer value
     <mat-progress-bar color="accent" mode="buffer" [value]="25" [bufferValue]="50">
     </mat-progress-bar>
+
+    <br><br>
+    <hr>
+
+    <h2>Mat tool bar</h2>
+
+    <mat-toolbar class="navbar">
+        <div>Code Evolution</div>
+        <div id="navbar">
+            <span>Home</span>
+            <span>About</span>
+            <span>Services</span>
+        </div>
+    </mat-toolbar>
+
     <br>
     <hr>
 
-    <h2></h2>
+    <h2>Sidenav</h2>
 
+    <mat-sidenav-container class="container" color="accent">
+        <mat-sidenav #sidenav (opened)="logState('opened')" (closed)="logState('closed')" [(opened)]="opened"
+            class="sidenav" mode="side">Sidenav</mat-sidenav>
+        <mat-sidenav-content><span>Main Content</span>
+            <button (click)="sidenav.toggle()">Toggle Sidenav</button>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 
+    <br><br>
+    <hr>
 
+    <h2>Menus</h2>
 
+    <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+        <button mat-menu-item [matMenuTriggerFor]="subMenu1">FrontEnd</button>
+        <button mat-menu-item>BackEnd</button>
+    </mat-menu>
 
+    <button mat-flat-button [matMenuTriggerFor]="menu">Menu</button>
 
+    <mat-menu #subMenu1="matMenu">
+        <button mat-menu-item>Angular</button>
+        <button mat-menu-item>React</button>
+        <button mat-menu-item>Vue</button>
+    </mat-menu>
 
+    <br><br>
 
+    <mat-menu #lazyMenu="matMenu">
+        <ng-template matMenuContent let-name="name" let-hby="hobby">
+            <button mat-menu-item>Angular</button>
+            <button mat-menu-item>React</button>
+            <button mat-menu-item>Logout {{name}} ({{hby}})</button>
+        </ng-template>
+    </mat-menu>
 
+    <button mat-flat-button [matMenuTriggerData]="{name:'Niranjan', hobby:'Coding'}"
+        [matMenuTriggerFor]="lazyMenu">Niranjan </button>
+    &nbsp; &nbsp; &nbsp;
+    <button mat-flat-button [matMenuTriggerData]="{name:'Dhananjaya', hobby:'Music'}"
+        [matMenuTriggerFor]="lazyMenu">Dhananjaya </button>
 
+    <br><br>
+    <hr>
 
+    <h2>List</h2>
+
+    <mat-list class="bgColor" dense>
+        <mat-list-item>Item 1</mat-list-item>
+        <mat-list-item>Item 2</mat-list-item>
+        <mat-list-item>Item 3</mat-list-item>
+    </mat-list>
+
+    <br><br>
+
+    <mat-nav-list class="bgColor">
+        <a mat-list-item href="#">Home</a>
+        <a mat-list-item href="#">About</a>
+        <a mat-list-item href="#">Services</a>
+    </mat-nav-list>
+
+    <br><br>
+
+    <mat-list class="bgColor">
+        <mat-list-item>
+            <mat-icon matListIcon>home</mat-icon>
+            <h3 matLine>Home</h3>
+            <p matLine>Description</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <mat-icon matListIcon>print</mat-icon>
+            <h3 matLine>Print</h3>
+            <p matLine>Print Data</p>
+        </mat-list-item>
+    </mat-list>
+
+    <br><br>
+    <hr>
+
+    <h2>Grid List</h2>
+
+    <mat-grid-list cols="2"  rowHeight="3:1" gutterSize="10px">
+        <mat-grid-tile colspan="2" class="bgColor">Tile 1</mat-grid-tile>
+        <mat-grid-tile class="bgColor">Tile 2</mat-grid-tile>
+        <mat-grid-tile class="bgColor">Tile 3</mat-grid-tile>
+        <mat-grid-tile class="bgColor">Tile 4</mat-grid-tile>
+    </mat-grid-list>
+
+    <br><br>
+
+    <mat-grid-list cols="2" class="bgColor" rowHeight="fit" style="height: 300px;">
+        <mat-grid-tile colspan="2">Tile 1</mat-grid-tile>
+        <mat-grid-tile>Tile 2</mat-grid-tile>
+        <mat-grid-tile>Tile 3</mat-grid-tile>
+        <mat-grid-tile>Tile 4</mat-grid-tile>
+    </mat-grid-list>
 
 
 
