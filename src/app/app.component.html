@@ -131,7 +131,7 @@
     <h2>Sidenav</h2>
 
     <mat-sidenav-container class="container" color="accent">
-        <mat-sidenav #sidenav (opened)="logState('opened')" (closed)="logState('closed')" [(opened)]="opened"
+        <mat-sidenav #sidenav (opened)="logSideNavState('opened')" (closed)="logSideNavState('closed')" [(opened)]="opened"
             class="sidenav" mode="side">Sidenav</mat-sidenav>
         <mat-sidenav-content><span>Main Content</span>
             <button (click)="sidenav.toggle()">Toggle Sidenav</button>
@@ -212,7 +212,7 @@
 
     <h2>Grid List</h2>
 
-    <mat-grid-list cols="2"  rowHeight="3:1" gutterSize="10px">
+    <mat-grid-list cols="2" rowHeight="3:1" gutterSize="10px">
         <mat-grid-tile colspan="2" class="bgColor">Tile 1</mat-grid-tile>
         <mat-grid-tile class="bgColor">Tile 2</mat-grid-tile>
         <mat-grid-tile class="bgColor">Tile 3</mat-grid-tile>
@@ -228,21 +228,176 @@
         <mat-grid-tile>Tile 4</mat-grid-tile>
     </mat-grid-list>
 
+    <br><br>
+    <hr>
 
+    <h2>Expansion panels</h2>
 
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Angular Fundamantals</mat-panel-title>
+            <mat-panel-description> Duration: 2 hours</mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Loreum ipsum</p>
+        <mat-action-row>
+            <button mat-flat-button>Enroll</button>
+        </mat-action-row>
+    </mat-expansion-panel>
 
+    <br><br>
 
+    <mat-accordion>
+        <mat-expansion-panel #accordion>
+            <mat-expansion-panel-header>
+                <mat-panel-title>Angular Material</mat-panel-title>
+                <mat-panel-description> Duration: 3 hours</mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>Loreum ipsum</p>
+            <mat-action-row>
+                <button mat-flat-button>Enroll</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>Angular Fundamantals</mat-panel-title>
+                <mat-panel-description> Duration: 2 hours</mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>Loreum ipsum</p>
+            <mat-action-row>
+                <button mat-flat-button>Enroll</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <br>
+    <button mat-flat-button (click)="accordion.toggle()">Toggle Accordion</button>
 
+    <br><br>
+    <hr>
 
+    <h2>Cards</h2>
 
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar class="bgColor"></div>
+            <mat-card-title> Title </mat-card-title>
+            <mat-card-subtitle>Sub title </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p> Content here</p>
+        </mat-card-content>
+        <mat-card-actions align="right">
+            <button mat-flat-button color="accent">Like</button>
+            <button mat-flat-button color="accent">Share</button>
+        </mat-card-actions>
+    </mat-card>
 
+    <br><br>
+    <hr>
 
+    <h2>Tabs</h2>
 
+    <mat-tab-group class="bgColor" #tabRef (selectedTabChange)="logTabChange(tabRef.selectedIndex)">
+        <mat-tab label="Angular">Angular</mat-tab>
+        <mat-tab label="React">React</mat-tab>
+        <mat-tab label="Vue">Vue</mat-tab>
+    </mat-tab-group>
+    <br>
+    Selected Index: {{tabRef.selectedIndex}}
 
+    <br><br>
+    <hr>
 
+    <h2>Stepper</h2>
 
+    <mat-horizontal-stepper class="bgColor">
+        <mat-step label="Ordered">Status: Ordered</mat-step>
+        <mat-step label="Shipped">
+            Status: Shipped
+            <button mat-flat-button matStepperPrevious>Previous</button>
+            <button mat-flat-button matStepperNext>next</button>
+        </mat-step>
+        <mat-step label="Delivered ">Status: Delivered</mat-step>
+    </mat-horizontal-stepper>
 
+    <br><br>
 
+    <mat-horizontal-stepper class="bgColor" linear>
+        <mat-step label="Ordered" completed=true>Status: Ordered</mat-step>
+        <mat-step label="Shipped" completed=false optional>
+            <p>Status: Shipped</p>
+            <div>
+                <button mat-flat-button matStepperPrevious completed=false>Previous</button>
+                <button mat-flat-button matStepperNext completed=false>next</button>
+            </div>
+        </mat-step>
+        <mat-step label="Delivered" completed=false>Status: Delivered</mat-step>
+    </mat-horizontal-stepper>
+
+    <br><br>
+
+    <mat-vertical-stepper class="bgColor" linear>
+        <mat-step label="Ordered (Completed)" completed=true>Status: Ordered</mat-step>
+        <mat-step label="Shipped" completed=false>
+            <p>Status: Shipped</p>
+            <div>
+                <button mat-flat-button matStepperPrevious completed=false>Previous</button>
+                <button mat-flat-button matStepperNext completed=false>next</button>
+            </div>
+        </mat-step>
+        <mat-step label="Delivered" completed=false>Status: Delivered</mat-step>
+    </mat-vertical-stepper>
+
+    <br><br>
+    <hr>
+
+    <h2>Input</h2>
+
+    <mat-form-field class="bgColor" floatLabel="auto" hideRequiredMarker appearance="fill" color="primary">
+        <mat-label>Name </mat-label>
+        <input matInput required>
+        <mat-hint align="end">Min 5 characters</mat-hint>
+    </mat-form-field>
+
+    <br><br>
+    <hr>
+
+    <h2>Select</h2>
+
+    <mat-form-field class="bgColor" >
+        <mat-label>Topic</mat-label>
+        <mat-select [(value)]="selectedValue" multiple>
+            <mat-option>None</mat-option>            
+            <mat-option value="angular">Angular</mat-option>
+            <mat-option value="react">React</mat-option>
+            <mat-option value="vue">Vue</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    {{selectedValue}}
+
+    <br><br>
+
+    <mat-form-field class="bgColor" >
+        <mat-label>Topic</mat-label>
+        <mat-select>
+            <mat-option>None</mat-option>            
+            <mat-optgroup label="FronEnd">
+                <mat-option value="angular">Angular</mat-option>
+            <mat-option value="react">React</mat-option>
+            <mat-option value="vue">Vue</mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="BackEnd">
+                <mat-option value="angular">Node</mat-option>
+            <mat-option value="react">Go</mat-option>
+            </mat-optgroup>
+        </mat-select>
+    </mat-form-field>
+     
+    <br><br>
+    <hr>
+
+    
+    
 
 
 

@@ -8,12 +8,17 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Angular-material';
   notifications = 10;
-  opened= true;
+  opened = true;
+  selectedValue = "vue";
+  options = ['Angular', 'React', 'Vue'];
 
-logState(state){
-  console.log(state);
-  
-}
+  logSideNavState(state) {
+    console.log(state);
+  }
+
+  logTabChange(selectedIndex) {
+    console.log(selectedIndex);
+  }
 
 
 }
