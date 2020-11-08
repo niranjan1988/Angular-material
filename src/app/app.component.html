@@ -131,8 +131,8 @@
     <h2>Sidenav</h2>
 
     <mat-sidenav-container class="container" color="accent">
-        <mat-sidenav #sidenav (opened)="logSideNavState('opened')" (closed)="logSideNavState('closed')" [(opened)]="opened"
-            class="sidenav" mode="side">Sidenav</mat-sidenav>
+        <mat-sidenav #sidenav (opened)="logSideNavState('opened')" (closed)="logSideNavState('closed')"
+            [(opened)]="opened" class="sidenav" mode="side">Sidenav</mat-sidenav>
         <mat-sidenav-content><span>Main Content</span>
             <button (click)="sidenav.toggle()">Toggle Sidenav</button>
         </mat-sidenav-content>
@@ -363,10 +363,10 @@
 
     <h2>Select</h2>
 
-    <mat-form-field class="bgColor" >
+    <mat-form-field class="bgColor">
         <mat-label>Topic</mat-label>
         <mat-select [(value)]="selectedValue" multiple>
-            <mat-option>None</mat-option>            
+            <mat-option>None</mat-option>
             <mat-option value="angular">Angular</mat-option>
             <mat-option value="react">React</mat-option>
             <mat-option value="vue">Vue</mat-option>
@@ -377,27 +377,131 @@
 
     <br><br>
 
-    <mat-form-field class="bgColor" >
+    <mat-form-field class="bgColor">
         <mat-label>Topic</mat-label>
         <mat-select>
-            <mat-option>None</mat-option>            
+            <mat-option>None</mat-option>
             <mat-optgroup label="FronEnd">
                 <mat-option value="angular">Angular</mat-option>
-            <mat-option value="react">React</mat-option>
-            <mat-option value="vue">Vue</mat-option>
+                <mat-option value="react">React</mat-option>
+                <mat-option value="vue">Vue</mat-option>
             </mat-optgroup>
             <mat-optgroup label="BackEnd">
                 <mat-option value="angular">Node</mat-option>
-            <mat-option value="react">Go</mat-option>
+                <mat-option value="react">Go</mat-option>
             </mat-optgroup>
         </mat-select>
     </mat-form-field>
-     
+
     <br><br>
     <hr>
 
+    <h2>Auto Complete</h2>
+
+    <!-- <form>
+        <mat-form-field>
+            <input type="text" matInput [matAutocomplete]="auto" />
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form> -->
+
+    <br><br>
+    <hr>
+
+    <h2>Checkbox / Radio button</h2>
+
+    <mat-checkbox class="bgColor" labelPosition="after" color="warn">Subscribe</mat-checkbox>
+
+    <br><br>
+
+    <mat-radio-group class="bgColor">
+        <mat-radio-button value="angular">Angular</mat-radio-button>
+        <mat-radio-button value="React">React</mat-radio-button>
+        <mat-radio-button value="Vue">Vue</mat-radio-button>
+    </mat-radio-group>
+
+    <br><br>
+    <hr>
+
+    <h2>Date Picker</h2>
     
-    
+    Initial view set
+    <mat-form-field class="bgColor">
+        <input matInput [matDatepicker]="datePicker" #date [(ngModel)]="selectedDate">
+        <mat-datepicker-toggle [for]="datePicker" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #datePicker="matDatepicker" startView="year"></mat-datepicker>
+    </mat-form-field>
+
+    {{date.value}} -- {{selectedDate}}
+
+    <br><br>
+    Min and Max dates Set
+    <mat-form-field appearance="fill" class="bgColor">
+        <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate">
+        <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <br><br>
+    Weekends Filtered
+    <mat-form-field class="bgColor">
+        <input matInput [matDatepicker]="datePickerFilter" [matDatepickerFilter]="dateFilter">
+        <mat-datepicker-toggle [for]="datePickerFilter" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #datePickerFilter="matDatepicker"></mat-datepicker>
+    </mat-form-field>
+
+    <br><br>
+    <hr>
+
+    <h2>Tooltips</h2>
+
+    <button mat-flat-button matTooltip="Welcome" matTooltipPosition="after" matTooltipShowDelay="2000"
+        matTooltipHideDelay="2000">
+        Click here
+    </button>
+
+    <br><br>
+    <hr>
+
+    <h2>Snackbar</h2>
+
+    <button mat-flat-button (click)="openSnackbar('It worked!', 'Dismiss')">Open Snackbar</button>
+    <br><br>
+    <button (click)="openCustomSnackbarComponent()" mat-flat-button>Open Custom Snackbar Component</button>
+
+    <br><br>
+    <hr>
+
+    <h2>Dialogs</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
