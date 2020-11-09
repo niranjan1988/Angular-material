@@ -31,15 +31,19 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
+import { CustomComponent } from './custom/custom.component';
 import { CustomSnackbarComponent } from './custom-snackbar/custom-snackbar.component';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomSnackbarComponent,
+    CustomComponent,
     CustomSnackbarComponent
   ],
   imports: [
@@ -73,7 +77,10 @@ import { CustomSnackbarComponent } from './custom-snackbar/custom-snackbar.compo
     MatNativeDateModule,
     MatTooltipModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

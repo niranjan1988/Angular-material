@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-custom-snackbar',
-  template: '<p>custom-snackbar works!</p>'
+  templateUrl: './custom-snackbar.component.html'
 })
 export class CustomSnackbarComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
 }
