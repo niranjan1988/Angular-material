@@ -22,11 +22,18 @@ span {
     padding: 10px;
 }
 
-.bgColor{
+.bgColor {
     background-color: lightblue;
 }
 
 table {
     width: 100%;
 }
-  
+
+.number {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    border: 1px solid tomato;
+    align-items: center;
+}

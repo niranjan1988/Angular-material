@@ -33,6 +33,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 import { CustomComponent } from './custom/custom.component';
@@ -80,7 +81,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatDialogModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,17 +14,17 @@ export interface PeriodicElement {
   symbol: string;
 }
 
-const  ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+const ELEMENT_DATA: PeriodicElement[] = [
+  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
+  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
+  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
+  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
+  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
+  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
+  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
+  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
+  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
+  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
 ];
 
 @Component({
@@ -32,7 +32,7 @@ const  ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit  {
+export class AppComponent implements AfterViewInit {
   title = 'Angular-material';
   notifications = 10;
   opened = true;
@@ -43,20 +43,28 @@ export class AppComponent implements AfterViewInit  {
   maxDate = new Date(2020, 11, 15);
   selectedDate = new Date();
 
- 
-  
+  virtualScrollArray = [];
+
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource( ELEMENT_DATA );
-    
-  @ViewChild(MatSort) sort : MatSort;
-  @ViewChild(MatPaginator) paginator : MatPaginator;
-    
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(private snackBar: MatSnackBar, public dialog: MatDialog) { }
+
+  ngOnInit(): void {
+    for (let index = 0; index < 1000; index++) {
+      this.virtualScrollArray.push(index);
+    }
+  }
+
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator; 
+    this.dataSource.paginator = this.paginator;
   }
-   
+
   logSideNavState(state) {
     console.log(state);
   }
@@ -91,19 +99,19 @@ export class AppComponent implements AfterViewInit  {
   }
 
   openDialog() {
-   let dialogRef =  this.dialog.open(CustomComponent,{data:{name:'Niranjan'}});
+    let dialogRef = this.dialog.open(CustomComponent, { data: { name: 'Niranjan' } });
 
-   dialogRef.afterClosed().subscribe(result=>{
-     console.log('Dialog result:',result);     
-   })
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog result:', result);
+    })
   }
 
   logRowData(row) {
     console.log(row);
-    
+
   }
 
-  filterData(filterText : string) {
+  filterData(filterText: string) {
     this.dataSource.filter = filterText.trim().toLowerCase();
   }
 
